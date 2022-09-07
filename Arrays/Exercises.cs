@@ -51,11 +51,13 @@ partial class Program
     /// <param name="items"></param>
     /// <param name="i"></param>
     /// <param name="j"></param>
-    public static void ArraySwapItems(int[] items, int i, int j)
+    public static void ArraySwapItems<TItem>(TItem[] items, int i, int j)
     {
-        
+        var temp = items[i];
+        items[i] = items[j];
+        items[j] = temp;
     }
-    
+
     /// <summary>
     /// Determines whether the specified array contains the specified item
     /// </summary>
@@ -198,7 +200,23 @@ partial class Program
     
     public static double[,] MatrixAdd(double[,] m, double[,] n)
     {
-        throw new NotImplementedException();
+        var dim0 = m.GetLength(0);
+        var dim1 = m.GetLength(1);
+
+        if (n.GetLength(0) != dim0)
+            throw new ArgumentException();
+        
+        if (n.GetLength(1) != dim1)
+            throw new ArgumentException();
+
+        var result = new double[dim0, dim1];
+        for (int i = 0; i < dim0; i++)
+        {
+            for (int j = 0; j < dim1; j++)
+                result[i, j] = m[i, j] + n[i, j];
+        }
+
+        return result;
     }
     
     public static double[,] MatrixSub(double[,] m, double[,] n)
