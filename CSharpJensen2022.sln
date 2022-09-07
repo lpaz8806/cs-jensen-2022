@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConditionalsAndLoops", "Con
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples", "Examples\Examples.csproj", "{0118FB13-D381-41D0-9C02-DD70B9AC1718}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arrays", "Arrays\Arrays.csproj", "{D9C0887C-DDBD-4FF2-936E-69813E64F4BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,5 +21,9 @@ Global
 		{0118FB13-D381-41D0-9C02-DD70B9AC1718}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0118FB13-D381-41D0-9C02-DD70B9AC1718}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0118FB13-D381-41D0-9C02-DD70B9AC1718}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9C0887C-DDBD-4FF2-936E-69813E64F4BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9C0887C-DDBD-4FF2-936E-69813E64F4BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9C0887C-DDBD-4FF2-936E-69813E64F4BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9C0887C-DDBD-4FF2-936E-69813E64F4BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
