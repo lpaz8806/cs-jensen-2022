@@ -66,10 +66,10 @@ partial class Program
     
     /// <summary>
     /// Returns the nth term of the Fibonacci succession.
-    /// The fibonacci succession starts with 1,1 and the next
+    /// The fibonacci succession starts with 0,1 and the next
     /// term is computed by adding the previous 2
     /// <example>
-    /// 1,1,2,3,5,8,13,...
+    /// 0,1,1,2,3,5,8,13,...
     /// Fib[4] = 3
     /// Fib[7] = 13
     /// </example>

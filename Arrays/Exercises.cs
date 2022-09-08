@@ -20,7 +20,25 @@ partial class Program
     /// <returns></returns>
     public static int SecondSmallest(int[] numbers)
     {
-        throw new NotImplementedException();
+        var m1 = Math.Min(numbers[0], numbers[1]);
+        var m2 = Math.Max(numbers[0], numbers[1]);
+    
+        for (int i = 2; i < numbers.Length; i++)
+        {
+            var n = numbers[i];
+        
+            if (n <= m1)
+            {
+                m2 = m1;
+                m1 = n;
+            }
+            else if(n < m2)
+            {
+                m2 = n;
+            }
+        }
+    
+        return m2;
     }
     
     /// <summary>
@@ -221,7 +239,23 @@ partial class Program
     
     public static double[,] MatrixSub(double[,] m, double[,] n)
     {
-        throw new NotImplementedException();
+        var dim0 = m.GetLength(0);
+        var dim1 = m.GetLength(1);
+
+        if (n.GetLength(0) != dim0)
+            throw new ArgumentException();
+        
+        if (n.GetLength(1) != dim1)
+            throw new ArgumentException();
+
+        var result = new double[dim0, dim1];
+        for (int i = 0; i < dim0; i++)
+        {
+            for (int j = 0; j < dim1; j++)
+                result[i, j] = m[i, j] - n[i, j];
+        }
+
+        return result;
     }
 
     /// <summary>
@@ -239,7 +273,7 @@ partial class Program
     /// <returns></returns>
     public static bool CanMultiplyMatrix(double[,] m, double[,] n)
     {
-        throw new NotImplementedException();
+        return m.GetLength(0) == n.GetLength(1);
     }
     
     public static double[,] MatrixMult(double[,] m, double[,] n)

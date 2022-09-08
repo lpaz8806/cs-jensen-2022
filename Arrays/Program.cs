@@ -8,8 +8,11 @@ partial class Program
         var m2 = new double[,] { { 1, 1 }, { 1, 1 } };
         var result = MatrixAdd(m1, m2);
 
+        var strRightAligned = "Hello".PadLeft(10, '_');
+        Console.WriteLine(strRightAligned);
         
-        
+        var strLeftAligned = "Hello".PadRight(10, '_');
+        Console.WriteLine(strLeftAligned);
     }
 
     static int Add(int x, params int[] args)
