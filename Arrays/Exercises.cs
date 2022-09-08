@@ -216,6 +216,30 @@ partial class Program
     
     #region Matrix Operations
     
+    public string MatrixToString<T>(T[,] matrix)
+    {
+        string str = string.Empty;
+    
+        for (int i = 0; i < matrix.GetLength(0); i++)
+        {
+            for (int j = 0; j < matrix.GetLength(1); j++)
+            {
+                var cell = matrix[i, j];
+                str += cell.ToString();
+                str += "  ";
+            }
+
+            str += Environment.NewLine;
+        }
+
+        return str;
+    }
+
+    public void PrintMatrix<T>(T[,] matrix)
+    {
+        Console.WriteLine(MatrixToString(matrix));
+    }
+    
     public static double[,] MatrixAdd(double[,] m, double[,] n)
     {
         var dim0 = m.GetLength(0);
