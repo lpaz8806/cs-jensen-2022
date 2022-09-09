@@ -4,15 +4,14 @@ partial class Program
 {
     static void Main(string[] args)
     {
-        var m1 = new double[,] { { 2, 3 }, { 4, 5 } };
-        var m2 = new double[,] { { 1, 1 }, { 1, 1 } };
-        var result = MatrixAdd(m1, m2);
-
-        var strRightAligned = "Hello".PadLeft(10, '_');
-        Console.WriteLine(strRightAligned);
+        var m1 = new double[,] { { 1, 2, 3 }, { 4, 5, 6 } };
+        var m2 = new double[,] { { 10, 11, 12 }, { 20, 21, 22 } };
+        var m3 = new double[,] { { 10, 11 }, { 20, 21 }, { 30, 31 } };
         
-        var strLeftAligned = "Hello".PadRight(10, '_');
-        Console.WriteLine(strLeftAligned);
+        var sum = MatrixAdd(m1, m2);
+        var product = MatrixMult(m1, m3);
+        
+        PrintMatrix(product);
     }
 
     static int Add(int x, params int[] args)

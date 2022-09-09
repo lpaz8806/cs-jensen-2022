@@ -49,14 +49,28 @@ partial class Program
     /// <returns></returns>
     public static int NthSmallest(int[] numbers, int n)
     {
-        throw new NotImplementedException();
+        return default;
     }
     
-    
-
     #endregion
     
     #region Operations on arrays
+    /// <summary>
+    /// Creates a copy of the specified array
+    /// </summary>
+    /// <param name="input"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    public static T[] ArrayClone<T>(T[] input)
+    {
+        var output = new T[input.Length];
+        
+        for (var i = 0; i < output.Length; i++)
+            output[i] = input[i];
+
+        return output;
+    }
+    
     /// <summary>
     /// Swaps the element at index i and the element at index j on the
     /// specified array
@@ -103,9 +117,14 @@ partial class Program
     /// </summary>
     /// <param name="items"></param>
     /// <returns></returns>
-    public static void ReverseArray(int[] items)
+    public static void ReverseArray<T>(T[] items)
     {
-        throw new NotImplementedException();
+        for (int i = 0; i < items.Length; i++)
+        {
+            var tmp = items[i];
+            items[i] = items[items.Length - i];
+            items[items.Length - i] = tmp;
+        }
     }
     
     /// <summary>
@@ -113,9 +132,11 @@ partial class Program
     /// </summary>
     /// <param name="items"></param>
     /// <returns></returns>
-    public static int[] ComputeArrayReverse(int[] items)
+    public static T[] ComputeArrayReverse<T>(T[] items)
     {
-        throw new NotImplementedException();
+        var result = ArrayClone(items);
+        ReverseArray(result);
+        return result; 
     }
 
     /// <summary>
@@ -216,7 +237,7 @@ partial class Program
     
     #region Matrix Operations
     
-    public string MatrixToString<T>(T[,] matrix)
+    public static string MatrixToString<T>(T[,] matrix)
     {
         string str = string.Empty;
     
@@ -225,8 +246,7 @@ partial class Program
             for (int j = 0; j < matrix.GetLength(1); j++)
             {
                 var cell = matrix[i, j];
-                str += cell.ToString();
-                str += "  ";
+                str += $"{cell}  ";
             }
 
             str += Environment.NewLine;
@@ -235,7 +255,7 @@ partial class Program
         return str;
     }
 
-    public void PrintMatrix<T>(T[,] matrix)
+    public static void PrintMatrix<T>(T[,] matrix)
     {
         Console.WriteLine(MatrixToString(matrix));
     }
@@ -302,7 +322,20 @@ partial class Program
     
     public static double[,] MatrixMult(double[,] m, double[,] n)
     {
-        throw new NotImplementedException();
+        if (!CanMultiplyMatrix(m, n))
+            throw new ArgumentException();
+
+        var resultRowsCount = m.GetLength(0);
+        var vectorsLength = m.GetLength(1);
+        var resultColsCount = n.GetLength(1);
+
+        var product = new double[resultRowsCount, resultColsCount];
+        for (int row = 0; row < resultRowsCount; row++)
+        for (int col = 0; col < resultColsCount; col++)
+        for (int k = 0; k < vectorsLength; k++)
+            product[row, col] += m[row, k] * n[k, col];
+
+        return product;
     }
     
     #endregion
