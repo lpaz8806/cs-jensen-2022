@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConditionalsAndLoops", "ConditionalsAndLoops\ConditionalsAndLoops.csproj", "{BFD54925-265E-471C-85E1-438A9A439F0C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L02ConditionalsAndLoops", "L02ConditionalsAndLoops\L02ConditionalsAndLoops.csproj", "{BFD54925-265E-471C-85E1-438A9A439F0C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples", "Examples\Examples.csproj", "{0118FB13-D381-41D0-9C02-DD70B9AC1718}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arrays", "Arrays\Arrays.csproj", "{D9C0887C-DDBD-4FF2-936E-69813E64F4BC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L03Arrays", "L03Arrays\L03Arrays.csproj", "{D9C0887C-DDBD-4FF2-936E-69813E64F4BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L01DataTypes", "L01DataTypes\L01DataTypes.csproj", "{8B65D697-6C81-4E0B-92B6-8F29571B40FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,5 +27,9 @@ Global
 		{D9C0887C-DDBD-4FF2-936E-69813E64F4BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9C0887C-DDBD-4FF2-936E-69813E64F4BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9C0887C-DDBD-4FF2-936E-69813E64F4BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B65D697-6C81-4E0B-92B6-8F29571B40FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B65D697-6C81-4E0B-92B6-8F29571B40FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B65D697-6C81-4E0B-92B6-8F29571B40FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B65D697-6C81-4E0B-92B6-8F29571B40FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
