@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L03Arrays", "L03Arrays\L03A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L01DataTypes", "L01DataTypes\L01DataTypes.csproj", "{8B65D697-6C81-4E0B-92B6-8F29571B40FE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Handledning", "Handledning\Handledning.csproj", "{87E60147-7B60-45DD-B04A-18C1999F57E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,5 +33,9 @@ Global
 		{8B65D697-6C81-4E0B-92B6-8F29571B40FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B65D697-6C81-4E0B-92B6-8F29571B40FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B65D697-6C81-4E0B-92B6-8F29571B40FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87E60147-7B60-45DD-B04A-18C1999F57E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87E60147-7B60-45DD-B04A-18C1999F57E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87E60147-7B60-45DD-B04A-18C1999F57E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87E60147-7B60-45DD-B04A-18C1999F57E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

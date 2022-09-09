@@ -96,7 +96,7 @@ partial class Program
     /// <param name="items">The array of items</param>
     /// <param name="item">The item to search for</param>
     /// <returns>True if the array contains the item. False otherwise</returns>
-    public static int ArrayContains(int[] items, int item)
+    public static bool ArrayContains(int[] items, int item)
     {
         throw new NotImplementedException();
     }
@@ -119,7 +119,7 @@ partial class Program
     /// <returns></returns>
     public static void ReverseArray<T>(T[] items)
     {
-        for (int i = 0; i < items.Length; i++)
+        for (int i = 0; i < items.Length / 2; i++)
         {
             var tmp = items[i];
             items[i] = items[items.Length - i];
