@@ -42,16 +42,67 @@ partial class Program
     }
     
     /// <summary>
-    /// Finds the nth smallest number in the specified array
+    /// Finds the nth smallest number in the specified array.
     /// </summary>
-    /// <param name="numbers"></param>
-    /// <param name="n"></param>
+    /// <example>
+    /// NthSmallest([3,5,2,8,4], 1) returns 2
+    /// NthSmallest([3,5,2,8,4], 2) returns 3
+    /// NthSmallest([3,5,2,8,4], 5) returns 8
+    /// </example>
     /// <returns></returns>
     public static int NthSmallest(int[] numbers, int n)
     {
         return default;
     }
     
+    #endregion
+
+    #region MyRegion
+
+    /// <summary>
+    /// Berättar om något av tecknen som finns i ordet endast förekommer en gång.
+    /// https://progsharp.se/kapitel/4/#uppgift-414
+    /// </summary>
+    /// <param name="word"></param>
+    /// <returns></returns>
+    static bool ContainsSomeCharacterOnlyOnce(string word)
+    {
+        for (int i = 0; i < word.Length; i++)
+        {
+            var count = 0;
+            for (int j = 0; j < word.Length; j++)
+                if (word[i] == word[j])
+                    count++;
+
+            if (count == 1)
+                return true;
+        }
+
+        return false;
+    }
+    
+    static bool ContainsSomeCharacterOnlyOnceClean(string word)
+    {
+        for (int i = 0; i < word.Length; i++)
+        {
+            var currentCharInWord = word[i];
+            if (CountChar(word, currentCharInWord) == 1)
+                return true;
+        }
+
+        return false;
+    }
+    static int CountChar(string word, char c)
+    {
+        var count = 0;
+        
+        for (int i = 0; i < word.Length; i++)
+            if (word[i] == c)
+                count++;
+        
+        return count;
+    }
+
     #endregion
     
     #region Operations on arrays
