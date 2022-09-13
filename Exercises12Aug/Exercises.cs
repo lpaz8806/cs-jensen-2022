@@ -6,7 +6,12 @@ partial class Program
     /// <returns>A new array containing the same elements as the source</returns>
     public static T[] ArrayClone<T>(T[] source)
     {
-        return _ArrayClone(source);
+        var clone = new T[source.Length];
+        
+        for (int i = 0; i < source.Length; i++)
+            clone[i] = source[i];
+
+        return clone;
     }
     
     static T[] _ArrayClone<T>(T[] source)
@@ -58,7 +63,12 @@ partial class Program
     /// <returns></returns>
     public static T[] ArraySlice<T>(T[] items, int i, int size)
     {
-        return _ArraySlice(items, i, size);
+        var slice = new T[size];
+        
+        for (int j = 0; j < size; j++)
+            slice[j] = items[i + j];
+        
+        return slice;
     }
 
     static T[] _ArraySlice<T>(T[] items, int i, int size)
@@ -88,7 +98,14 @@ partial class Program
     /// <returns></returns>
     public static void PrintRightTriangle(int height)
     {
-        _PrintRightTriangleNestedLoops(height);
+        string str = string.Empty;
+        for (int i = 0; i < height; i++)
+        { 
+            str += "*";
+            Console.WriteLine(str);
+        }
+        
+        // _PrintRightTriangleNestedLoops(height);
     }
 
     static void _PrintRightTriangleNestedLoops(int height)
@@ -131,17 +148,29 @@ partial class Program
     /// <returns>true if the argument is a palindrome, false otherwise</returns>
     public static bool IsPalindrome(string word)
     {
-        return _IsPalindromeWithLoopsNaive(word);
+        var str = string.Empty;
+        for (int i = 0; i < word.Length; i++)
+        {
+            str = word[i] + str;
+        }
+        
+        var j = word.Length - 1;
+        for (int i = j; i >= 0; i--)
+            str += word[i];
+
+        return str == word;
+
+        // return _IsPalindromeWithLoopsNaive(word);
         // return _IsPalindromeWithLoops(word);
         // return _IsPalindromeWithHomeMadeReverse(word);
         // return _IsPalindromeWithLoopsClean(word);
-        
+
     }
     
     static bool _IsPalindromeWithLoopsNaive(string word)
     {
         for (int i = 0; i < word.Length; i++)
-            if (word[i] != word[word.Length - 1 - i]) // char in reverse
+            if (word[i] != CharInReverse(word, i)) // char in reverse
                 return false;
         
         return true;
@@ -210,7 +239,8 @@ partial class Program
 
     //-----------------------------------------------------------------------------//
     
-    /// <summary>Prints in the console a right triangle with the specified height</summary>
+    /// <summary>Prints in the console a right triangle with the specified
+    /// height</summary>
     /// <example>
     /// Om användaren till exempel anger sidlängden 5 så ska följande triangel ritas ut:
     ///     *
@@ -222,8 +252,17 @@ partial class Program
     /// <returns></returns>
     public static void PrintIsoscelesTriangle(int height)
     {
-        // hint: Consider string.PadLeft
-        _PrintIsoscelesTrianglePadLeft(height);
+        PrintIsoscelesTriangleJohan(height);
+    }
+
+    public static void PrintIsoscelesTriangleJohan(int height)
+    {
+        var stars = "*";
+        for (int i = 0; i < height; i++)
+        {
+            Console.WriteLine(stars.PadLeft(height + i, '_'));
+            stars += "**";
+        }
     }
     
     static void _PrintIsoscelesTrianglePadLeft(int height)
@@ -264,7 +303,25 @@ partial class Program
     /// <returns></returns>
     public static int NthSmallest(int[] numbers, int n)
     {
-        return _NthSmallest(numbers, n);
+        int nthSmallest = -1;
+        
+        for (int i = 0; i < n; i++)
+        {
+            nthSmallest = Min(numbers);
+            Remove(numbers, nthSmallest);
+        }
+
+        return nthSmallest;
+        //return _NthSmallest(numbers, n);
+    }
+
+    static int Min(int[] numbers)
+    {
+        return numbers.Min();
+    }
+    static int[] Remove(int[] numbers, int element)
+    {
+        return null;
     }
     
     static int _NthSmallest(int[] numbers, int n)
@@ -302,16 +359,15 @@ partial class Program
     //-----------------------------------------------------------------------------//
     
     /// <summary>
-    /// Replaces all occurrences of a substring consisting of one character by the
-    /// character alone.
-    /// 
-    /// This means, when one character appears more than once consecutively (no other
-    /// different character in the middle) then those extra repeated characters are
-    /// removed
+    /// Replaces all occurrences of a substring consisting of one
+    /// character by the character alone.
+    /// This means, when one character appears more than once
+    /// consecutively (no other different character in the middle)
+    /// then those extra repeated characters are removed
     /// </summary>
     /// <example>
     /// RemoveDuplicates("aaaabccde") returns "abcde"
-    /// RemoveDuplicates("qwerty") returns "qwerty"
+    /// RemoveDuplicates("qwertyq") returns "qwertyq"
     /// RemoveDuplicates("abacbc") returns "abacbc"
     /// RemoveDuplicates("grattis") returns "gratis"
     /// RemoveDuplicates("aabcaa") returns "abca"
@@ -319,32 +375,29 @@ partial class Program
     /// <returns></returns>
     public static string RemoveDuplicates(string str)
     {
-        return _RemoveDuplicatesWithNestedLoops(str);
-        //return _RemoveDuplicates(str);
+        return _RemoveDuplicatesCool(str);
     }
     
-    static string _RemoveDuplicatesWithNestedLoops(string str)
+    static string _RemoveDuplicatesCool(string str)
     {
-        var strWithoutDuplicates = string.Empty;
+        if (string.IsNullOrEmpty(str))
+            return str;
+            
+        var output = string.Empty;
         
-        for (int i = 0; i < str.Length; i++)
-        {
-            var currentChar = str[i];
-            strWithoutDuplicates += currentChar;
+        for (int i = 0; i < str.Length - 1; i++)
+            if (str[i] != str[i + 1])
+                output += str[i];
 
-            for (int j = i + 1; j < str.Length && str[j] == currentChar; j++)
-                i++;
-        }
-
-        return strWithoutDuplicates;
+        output += str[str.Length - 1];
+        return output;
     }
     
     static string _RemoveDuplicates(string str)
     {
         var result = string.Empty;
-        
-        int i = 0;
-        while (i < str.Length)
+
+        for (int i = 0; i < str.Length; i++)
         {
             var count = _CountConsecutiveCharsAt(str, i);
             result += str[i];
@@ -353,13 +406,14 @@ partial class Program
 
         return result;
     }
+
     static int _CountConsecutiveCharsAt(string str, int i)
     {
         int count = 0;
-        
-        for (int j = i; j < str.Length; j++)
+
+        for (int j = i + 1; j < str.Length; j++)
         {
-            if(str[i] != str[j])
+            if (str[i] != str[j])
                 break;
 
             count++;
