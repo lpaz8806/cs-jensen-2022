@@ -33,7 +33,11 @@ partial class Program
             Console.WriteLine($"Move from {start} to {end}");
             return;
         }
-        
+        // T(n) = 2^n - 1
+        // T(4)  = 2 * T(3) + 1  = 15 = 16 -1
+        // T(3)  = 2 * T(2) + 1  = 7  = 8 - 1
+        // T(2)  = 2 * T(1) + 1  = 3  = 4 - 1
+        // T(1)  = 1             = 1  = 2 - 1
         HanoiMove(n - 1, start, aux, end);
         HanoiMove(1, start, end, aux);
         HanoiMove(n - 1, aux, end, start);
@@ -48,8 +52,9 @@ partial class Program
             return numbers[0];
         
         var current = numbers[0];
-        var maxRest = MaxInArray(Rest(numbers));
-        return current > maxRest ? current : maxRest;
+        var restOfCollection = Rest(numbers);
+        var maxRest = MaxInArray(restOfCollection);
+        return Math.Max(current, maxRest);
     }
     
     static int[] Rest(int[] arr)
