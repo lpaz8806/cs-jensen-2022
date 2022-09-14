@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Handledning", "Handledning\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercises12Aug", "Exercises12Aug\Exercises12Aug.csproj", "{4D7C565B-56AB-4F61-B99F-224E603D7110}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgsharpSolutions", "ProgsharpSolutions\ProgsharpSolutions.csproj", "{B7E539A1-A57C-4817-A627-D7A3D82BABF0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,5 +45,9 @@ Global
 		{4D7C565B-56AB-4F61-B99F-224E603D7110}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D7C565B-56AB-4F61-B99F-224E603D7110}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D7C565B-56AB-4F61-B99F-224E603D7110}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7E539A1-A57C-4817-A627-D7A3D82BABF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7E539A1-A57C-4817-A627-D7A3D82BABF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7E539A1-A57C-4817-A627-D7A3D82BABF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7E539A1-A57C-4817-A627-D7A3D82BABF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
