@@ -3,17 +3,26 @@ namespace Recursion;
 partial class Program
 {
     //-----------------------------------------//
-    /// <summary>Computes the subtraction of x and y</summary>
+    /// <summary>
+    /// Computes the subtraction of x and y.
+    /// Assume x and y nonnegatives
+    /// </summary>
     static int Sub(int x, int y)
     {
-        throw new NotImplementedException();
+        if (y == 0)
+            return x;
+
+        return Sub(x - 1, y - 1);
     }
     
     //-----------------------------------------//
     /// <summary>Computes the product of x and y</summary>
     static int Mul(int x, int y)
     {
-        throw new NotImplementedException();
+        if (y == 0)
+            return 0;
+
+        return Add(x, Mul(x, y - 1));
     }
     
     //-----------------------------------------//
@@ -22,7 +31,13 @@ partial class Program
     /// </summary>
     static int Div(int x, int y)
     {
-        throw new NotImplementedException();
+        if (y == 0)
+            throw new DivideByZeroException();
+        
+        if (x < y)
+            return 0;
+
+        return 1 + Div(Sub(x, y), y);
     }
     
     //-----------------------------------------//
@@ -32,7 +47,13 @@ partial class Program
     /// </summary>
     static int Mod(int x, int y)
     {
-        throw new NotImplementedException();
+        if (y == 0)
+            throw new DivideByZeroException();
+        
+        if (x < y)
+            return x;
+
+        return Mod(Sub(x, y), y);
     }
     
     //-----------------------------------------//
@@ -49,7 +70,10 @@ partial class Program
     /// <returns>n to the power of k</returns>
     static int Pow(int n, int k)
     {
-        throw new NotImplementedException();
+        if (k == 0)
+            return 1;
+        
+        return Mul(n, Pow(n, k - 1));
     }
     
     //--------------------------------------------------//
@@ -71,9 +95,14 @@ partial class Program
     // Compute it recursively
     static bool IsPalindrome(string word)
     {
-        throw new NotImplementedException();
+        if (word.Length < 2)
+            return true;
+        
+        return
+            word[0] == word[word.Length - 1] &&
+            IsPalindrome(word.Substring(1, word.Length - 2));
     }
-    
+
     //--------------------------------------------------//
     
     /// <summary>
