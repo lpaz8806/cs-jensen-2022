@@ -3,28 +3,33 @@ namespace Recursion;
 partial class Program
 {
     //-----------------------------------------//
-    
+    /// <summary>Computes the subtraction of x and y</summary>
     static int Sub(int x, int y)
     {
         throw new NotImplementedException();
     }
     
     //-----------------------------------------//
-    
+    /// <summary>Computes the product of x and y</summary>
     static int Mul(int x, int y)
     {
         throw new NotImplementedException();
     }
     
     //-----------------------------------------//
-    
+    /// <summary>
+    /// Computes the integer division of x and y
+    /// </summary>
     static int Div(int x, int y)
     {
         throw new NotImplementedException();
     }
     
     //-----------------------------------------//
-    
+    /// <summary>
+    /// Computes the reminder in the division
+    /// of x by y
+    /// </summary>
     static int Mod(int x, int y)
     {
         throw new NotImplementedException();
