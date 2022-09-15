@@ -2,6 +2,18 @@ namespace Recursion;
 
 partial class Program
 {
+    /// <summary>
+    /// Computes the addition of x and y.
+    /// Assume x and y nonnegatives
+    /// </summary>
+    static int Add(int x, int y)
+    {
+        if (x == 0) return y;
+        if (y == 0) return x;
+
+        return Add(x + 1, y - 1);
+    }
+    
     //-----------------------------------------//
     /// <summary>
     /// Computes the subtraction of x and y.
