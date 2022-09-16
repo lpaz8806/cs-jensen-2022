@@ -146,9 +146,23 @@ partial class Program
     //------------------------------------------------------------//
     
     /// <summary>
-    /// 
+    /// Given a boolean map where true means land and false means
+    /// water. Counts the amount of islands in that map.
+    /// A single true is a island 
     /// </summary>
-    /// <param name="map"></param>
+    /// <example>
+    /// 0 1 0 1
+    /// 1 1 0 1     =>  2
+    /// 0 0 0 0
+    ///
+    /// 0 0 0 1
+    /// 1 0 0 1     =>  2
+    /// 0 0 1 1
+    ///
+    /// 1 0 0 0
+    /// 0 1 0 0     =>  1
+    /// 0 0 1 0
+    /// </example>
     /// <returns>The amount of islands found</returns>
     static int CountIslands(bool[,] map)
     {
