@@ -99,7 +99,14 @@ partial class Program
     /// <returns></returns>
     static bool ArrayContains(int[] numbers, int n)
     {
-        throw new NotImplementedException();
+        return ArrayContains(numbers, n, numbers.Length - 1);
+    }
+    static bool ArrayContains(int[] numbers, int n, int i)
+    {
+        if (i < 0)
+            return false;
+        
+        return numbers[i] == n || ArrayContains(numbers, n, i - 1);
     }
     
     //--------------------------------------------------//
@@ -128,7 +135,9 @@ partial class Program
     /// </example>
     static string DecimalToBinary(int n)
     {
-        throw new NotImplementedException();
+        if (n == 0)
+            return "0";
+        return string.Empty;
     }
     
     //--------------------------------------------------//

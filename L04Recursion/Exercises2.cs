@@ -11,7 +11,13 @@ partial class Program
     /// </example>
     static int Neg(int x)
     {
-        throw new NotImplementedException();
+        if (x == 0)
+            return 0;
+
+        if (x > 0)
+            return Neg(x - 1) - 1;
+        
+        return Neg(x + 1) + 1;
     }
     
     //------------------------------------------------------------//
@@ -55,6 +61,9 @@ partial class Program
     /// </example>
     static int DigitsSum(int n)
     {
+        // 125 = 12 * 10 + 5
+        //   n = q  *  d + r
+        
         throw new NotImplementedException();
     }
     
