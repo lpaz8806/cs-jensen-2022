@@ -28,7 +28,7 @@ partial class Program
     /// rapidly and overflows the ulong capacity
     /// </remarks>
     /// <example>
-    /// Factorial(0) = 0
+    /// Factorial(0) = 1
     /// Factorial(1) = 1
     /// Factorial(3) = 6
     /// Factorial(5) = 120
