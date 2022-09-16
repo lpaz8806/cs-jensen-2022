@@ -19,7 +19,7 @@ partial class Program
     /// <summary>
     /// Computes the factorial of n. The
     /// factorial of n is defined as the product
-    /// from 1 to n and the factorial of 0 is 0.
+    /// from 1 to n and the factorial of 0 is 1.
     /// Factorial(n) = 1 * 2 * ... * n
     /// </summary>
     /// <remarks>
