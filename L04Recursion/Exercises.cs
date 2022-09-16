@@ -140,6 +140,10 @@ partial class Program
     /// 
     /// Assume that the numbers are sorted
     /// </summary>
+    /// <example>
+    /// BSearch({1,12,23,34,45}, 23) => 2
+    /// BSearch({1,12,23,34,45}, 69) => -1
+    /// </example>
     static int BinarySearch(int[] numbers, int n)
     {
         // compute it recursively

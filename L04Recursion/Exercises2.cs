@@ -172,8 +172,21 @@ partial class Program
     //------------------------------------------------------------//
     
     /// <summary>
-    /// 
+    /// Computes the area of the largest island in the map
     /// </summary>
+    /// /// <example>
+    /// 0 1 0 1
+    /// 1 1 0 1     =>  3
+    /// 0 0 0 0
+    ///
+    /// 0 0 0 1
+    /// 1 0 0 1     =>  4
+    /// 0 0 1 1
+    ///
+    /// 1 0 0 0
+    /// 0 1 0 0     =>  3
+    /// 0 0 1 0
+    /// </example>
     /// <param name="map"></param>
     /// <returns>The area of the largest island in the map</returns>
     static int ComputeAreaOfLargestIsland(bool[,] map)
