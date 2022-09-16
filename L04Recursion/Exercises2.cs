@@ -61,7 +61,7 @@ partial class Program
     //------------------------------------------------------------//
     
     /// <summary>
-    /// Count the number of occurrences of the digit d in n.
+    /// Counts the number of occurrences of the digit d in n.
     /// Assume n >= 0 and d between 0 and 9
     /// </summary>
     /// <example>
@@ -123,17 +123,17 @@ partial class Program
     /// Sorts the specified array in ascending order
     /// </summary>
     /// <example>
-    /// Sort({1,5,2,6,3,4}) => {1,2,3,4,5,6}
+    /// Sort({1,5,2,6,3,4}) -- after sort --> {1,2,3,4,5,6}
     /// </example>
     static void ArraySortAsc(int[] numbers)
     {
         throw new NotImplementedException();
     }
-    
+
     //------------------------------------------------------------//
     
     /// <summary>
-    /// Sorts the specified array in ascending order
+    /// Sorts the specified array in descending order
     /// </summary>
     /// <example>
     /// Sort({1,5,2,6,3,4}) => {6,5,4,3,2,1}
