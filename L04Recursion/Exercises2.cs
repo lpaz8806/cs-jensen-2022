@@ -43,6 +43,9 @@ partial class Program
     /// <summary>
     /// Computes the sum of the digits of the specified
     /// non-negative number.
+    ///
+    /// Hint: Given a number, how to compute its least significant
+    /// digit? (the right-most digit)
     /// </summary>
     /// <example>
     /// DigitsSum(1) = 1
