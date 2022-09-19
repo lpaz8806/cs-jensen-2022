@@ -261,7 +261,32 @@ partial class Program
     /// <returns>The amount of islands found</returns>
     static int CountIslands(bool[,] map)
     {
-        throw new NotImplementedException();
+        map = (bool[,])map.Clone();
+        
+        var count = 0;
+        for (int i = 0; i < map.GetLength(0); i++)
+        for (int j = 0; j < map.GetLength(1); j++)
+        {
+            if(!map[i,j]) continue;
+            RemoveLand(map, i, j);
+            count++;
+        }
+
+        return count;
+    }
+
+    static void RemoveLand(bool[,] map, int i, int j)
+    {
+        if (i < 0 || i >= map.GetLength(0)) return;
+        if (j < 0 || j >= map.GetLength(1)) return;
+        if (!map[i, j]) return;
+
+        map[i, j] = false;
+        
+        RemoveLand(map, i + 1, j);
+        RemoveLand(map, i - 1, j);
+        RemoveLand(map, i, j + 1);
+        RemoveLand(map, i, j - 1);
     }
     
     //------------------------------------------------------------//
@@ -286,7 +311,35 @@ partial class Program
     /// <returns>The area of the largest island in the map</returns>
     static int ComputeAreaOfLargestIsland(bool[,] map)
     {
-        throw new NotImplementedException();
+        map = (bool[,])map.Clone();
+        
+        var maxArea = 0;
+        for (int i = 0; i < map.GetLength(0); i++)
+        for (int j = 0; j < map.GetLength(1); j++)
+        {
+            if(!map[i,j]) continue;
+            
+            var area = AreaOfIsland(map, i, j);
+            if (area > maxArea)
+                maxArea = area;
+        }
+
+        return maxArea;
+    }
+    
+    static int AreaOfIsland(bool[,] map, int i, int j)
+    {
+        if (i < 0 || i >= map.GetLength(0)) return 0;
+        if (j < 0 || j >= map.GetLength(1)) return 0;
+        if (!map[i, j]) return 0;
+
+        map[i, j] = false;
+
+        return 1 +
+            AreaOfIsland(map, i + 1, j) +
+            AreaOfIsland(map, i - 1, j) +
+            AreaOfIsland(map, i, j + 1) +
+            AreaOfIsland(map, i, j - 1);
     }
     
     //------------------------------------------------------------//
