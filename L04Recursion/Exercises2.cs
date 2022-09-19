@@ -41,7 +41,10 @@ partial class Program
     /// </example>
     static ulong Factorial(ulong n)
     {
-        throw new NotImplementedException();
+        if (n == 0)
+            return 1;
+
+        return n * Factorial(n - 1);
     }
     
     //------------------------------------------------------------//
@@ -61,10 +64,13 @@ partial class Program
     /// </example>
     static int DigitsSum(int n)
     {
-        // 125 = 12 * 10 + 5
-        //   n = q  *  d + r
+        var lastDigit = n % 10;
+        var nExceptLastDigit = n / 10;
         
-        throw new NotImplementedException();
+        if (n == 0)
+            return 0;
+        
+        return lastDigit + DigitsSum(nExceptLastDigit);
     }
     
     //------------------------------------------------------------//
@@ -82,7 +88,16 @@ partial class Program
     /// </example>
     static int CountDigit(int n, int d)
     {
-        throw new NotImplementedException();
+        var lastDigit = n % 10;
+        var nExceptLastDigit = n / 10;
+
+        var count = lastDigit == d ? 1 : 0;
+
+        var areThereMoreDigitsToExplore = nExceptLastDigit > 0;
+        if (areThereMoreDigitsToExplore)
+            count += CountDigit(nExceptLastDigit, d);
+
+        return count;
     }
     
     //------------------------------------------------------------//
@@ -102,7 +117,17 @@ partial class Program
     /// </example>
     static bool IsNestedParenthesis(string str)
     {
-        throw new NotImplementedException();
+        if (str.Length == 0)
+            return true;  // It says "zero or more pairs"
+
+        var firstCharIsOpenParenthesis = str[0] == '(';
+        var lastCharIsClosedParenthesis = str[^1] == ')';
+
+        if (!firstCharIsOpenParenthesis || !lastCharIsClosedParenthesis)
+            return false;
+        
+        var nestedSubstring = str.Substring(1, str.Length - 2);
+        return IsNestedParenthesis(nestedSubstring);
     }
     
     //------------------------------------------------------------//
@@ -123,7 +148,27 @@ partial class Program
     /// <returns>true if n is a Wirth number, false otherwise</returns>
     static bool IsWirth(int n)
     {
-        throw new NotImplementedException();
+        return IsWirth(n, 1);
+    }
+    static bool IsWirth(int n, int currentWirthNumber)
+    {
+        if (n == currentWirthNumber)
+            return true;
+
+        if (currentWirthNumber > n)
+            return false;
+        
+        return
+            IsWirth(n, 2 * currentWirthNumber + 1) ||
+            IsWirth(n, 3 * currentWirthNumber + 1);
+    }
+    
+    static bool IsWirthBottomTop(int n)
+    {
+        return
+            n == 1 ||
+            n % 2 == 1 && IsWirthBottomTop(n / 2) ||
+            n % 3 == 1 && IsWirthBottomTop(n / 3);
     }
     
     //------------------------------------------------------------//
@@ -136,9 +181,33 @@ partial class Program
     /// </example>
     static void ArraySortAsc(int[] numbers)
     {
-        throw new NotImplementedException();
+        ArraySortAsc(numbers, 0);
+    }
+    static void ArraySortAsc(int[] numbers, int i)
+    {
+        if(i >= numbers.Length)
+            return;
+
+        var iMin = IndexOfMin(numbers, i);
+        Swap(numbers, i, iMin);
+        ArraySortAsc(numbers, i + 1);
+    }
+    static int IndexOfMin(int[] numbers, int startIndex)
+    {
+        var iMin = startIndex;
+        for (var i = startIndex; i < numbers.Length; i++)
+            if (numbers[i] < numbers[iMin])
+                iMin = i;
+        return iMin;
     }
 
+    static void Swap(int[] numbers, int i, int j)
+    {
+        var tmp = numbers[i];
+        numbers[i] = numbers[j];
+        numbers[j] = tmp;
+    }
+    
     //------------------------------------------------------------//
     
     /// <summary>
@@ -149,7 +218,24 @@ partial class Program
     /// </example>
     static void ArraySortDesc(int[] numbers)
     {
-        throw new NotImplementedException();
+        ArraySortDesc(numbers, 0);
+    }
+    static void ArraySortDesc(int[] numbers, int i)
+    {
+        if(i >= numbers.Length)
+            return;
+
+        var iMax = IndexOfMax(numbers, i);
+        Swap(numbers, i, iMax);
+        ArraySortDesc(numbers, i + 1);
+    }
+    static int IndexOfMax(int[] numbers, int startIndex)
+    {
+        var iMax = startIndex;
+        for (var i = startIndex; i < numbers.Length; i++)
+            if (numbers[i] > numbers[iMax])
+                iMax = i;
+        return iMax;
     }
     
     //------------------------------------------------------------//
