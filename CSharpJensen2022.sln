@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgsharpSolutions", "Progs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L04Recursion", "L04Recursion\L04Recursion.csproj", "{668B1F14-0F3C-4AAD-A956-7F536D1982E3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L05Classes", "L05Classes\L05Classes.csproj", "{A9F9FEA0-CA49-452D-ABD4-42201C72BFFA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,5 +57,9 @@ Global
 		{668B1F14-0F3C-4AAD-A956-7F536D1982E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{668B1F14-0F3C-4AAD-A956-7F536D1982E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{668B1F14-0F3C-4AAD-A956-7F536D1982E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9F9FEA0-CA49-452D-ABD4-42201C72BFFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9F9FEA0-CA49-452D-ABD4-42201C72BFFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9F9FEA0-CA49-452D-ABD4-42201C72BFFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9F9FEA0-CA49-452D-ABD4-42201C72BFFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
