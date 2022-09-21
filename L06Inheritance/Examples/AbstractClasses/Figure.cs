@@ -5,6 +5,11 @@ public abstract class Figure
     public abstract decimal Area();
     public abstract decimal Perimeter();
 
+    public virtual void Print()
+    {
+        Console.WriteLine("No clue who am I");
+    }
+    
     public static decimal SumAreas(Figure[] figures)
     {
         var sum = 0m;

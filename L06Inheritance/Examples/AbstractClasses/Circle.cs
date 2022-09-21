@@ -18,4 +18,9 @@ public class Circle : Figure
     {
         return 2 * (decimal)Math.PI * radius;
     }
+
+    public override void Print()
+    {
+        Console.WriteLine("Im a Circle");
+    }
 }

@@ -39,7 +39,7 @@ public class ElectricCar : Car
     }
 }
 
-public class Lådbil : Car
+public sealed class Lådbil : Car
 {
     public Lådbil() : base(5)
     {
