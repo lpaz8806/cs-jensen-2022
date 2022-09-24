@@ -1,4 +1,5 @@
-﻿using L06Inheritance.Examples.Circuits;
+﻿using L06Inheritance.Examples.AbstractClasses;
+using L06Inheritance.Examples.Circuits;
 
 class Program
 {

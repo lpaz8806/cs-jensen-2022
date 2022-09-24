@@ -1,3 +1,5 @@
+using System.Drawing;
+
 namespace L05Classes;
 /// <summary>
 /// You can implement a PhoneBook that can hold
@@ -26,5 +28,66 @@ namespace L05Classes;
 /// </summary>
 public class PhoneBook
 {
+    private const int MaxEntries = 10;
+    private NamePhonePair[] _entries = new NamePhonePair[MaxEntries];
     
+    public int Count { get; private set; }
+
+    public void Add(string name, string phone)
+    {
+        if (Count >= MaxEntries)
+            throw new InvalidOperationException("Phonebook is full");
+
+        _entries[Count] = new NamePhonePair(name, phone);
+        Count++;
+    }
+    
+    public void Remove(string name)
+    {
+        int i = FindIndexOfEntryWithName(name);
+        
+        if(i < 0) return;
+        
+        _entries[i] = _entries[Count - 1];
+        Count--;
+    }
+    
+    public void Print()
+    {
+        for (int i = 0; i < _entries.Length; i++)
+            Console.WriteLine(_entries[i]);
+    }
+
+
+    private int FindIndexOfEntryWithName(string name)
+    {
+        for (int i = 0; i < Count; i++)
+            if (_entries[i].Name == name)
+                return i;
+
+        return -1;
+    }
+
+    /*
+        A simple "box" to hold names and phones together.
+        Notice that this struct is private, and therefore,
+        an implementation detail. You could've done the
+        same thing with 2 arrays or any other idea
+    */
+    private struct NamePhonePair
+    {
+        public string Name;
+        public string Phone;
+
+        public NamePhonePair(string name, string phone)
+        {
+            Name = name;
+            Phone = phone;
+        }
+
+        // We can simplify the Print functionality by
+        // specifying here how a name-phone pair should
+        // be stringified (converted to string)
+        public override string ToString() => $"{Name} - {Phone}";
+    }
 }

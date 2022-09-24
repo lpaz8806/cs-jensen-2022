@@ -1,3 +1,5 @@
+using System.Text;
+
 namespace L05Classes;
 
 /*
@@ -10,69 +12,57 @@ namespace L05Classes;
 */
 public class Polynomial
 {
-    // Think about how can you represent a polynomial in a way
-    // that you can operate with it.
-    
-    // HINT: Look at the coefficients and the exponents and see
-    // how you can use the data types you already know to
-    // capture the essentials
+    private long[] coefficients;
 
-    // https://sv.wikipedia.org/wiki/Polynom
-    // https://en.wikipedia.org/wiki/Polynomial
-    
-    // OBS: The code to solve this problem is quite simple.
-    // Give yourself time to understand the requirements (you may ask if you need). This is the key part
-    
-    /// <summary>
-    /// Evaluates this polynomial at the specified value x
-    /// </summary>
-    public long EvaluateAt(int x)
+    public int Degree => coefficients.Length - 1;
+
+    public Polynomial(params long[] coefficients)
     {
-        throw new NotImplementedException();
+        this.coefficients = coefficients;
     }
     
-    /// <summary>
-    /// Returns the sum of this polynomial
-    /// </summary>
-    /// <returns>A new polynomial resulting from adding this one and the other one</returns>
-    public Polynomial Add(Polynomial q)
+    public long EvaluateAt(long x)
     {
-        throw new NotImplementedException();
+        var result = 0L;
+        for (int i = 0; i < coefficients.Length; i++)
+            result += coefficients[i] * (long)Math.Pow(x, i);
+        return result;
     }
     
-    /// <summary>
-    /// Returns the sum of this polynomial
-    /// </summary>
-    /// <returns>A new polynomial resulting from adding this one and the other one</returns>
-    public Polynomial Sub(Polynomial q)
+    public Polynomial Add(Polynomial p)
     {
-        throw new NotImplementedException();
+        var maxDegree = Math.Max(Degree, p.Degree);
+        var minDegree = Math.Min(Degree, p.Degree);
+
+        var sum = new long[maxDegree];
+
+        for (var i = 0; i < minDegree; i++)
+            sum[i] = coefficients[i] + p.coefficients[i];
+        
+        for (var i = minDegree; i < Degree; i++)
+            sum[i] = coefficients[i];
+        
+        for (var i = minDegree; i < p.Degree; i++)
+            sum[i] = p.coefficients[i];
+
+        return new Polynomial(sum);
     }
-    
-    /// <summary>
-    /// Returns the "human" representation for this polynomial
-    /// </summary>
-    /// <example>
-    /// p.ToString('x') => "x^2 - 4*x + 1"
-    /// q.ToString('y') => "-3*y^2 + y + 1"
-    /// w.ToString('z') => "-z^3 + z^2 + 1"
-    /// </example>
-    public string ToString(char varName)
+    public Polynomial Sub(Polynomial p)
     {
-        throw new NotImplementedException();
-    }
-    
-    
-    public static Polynomial operator +(Polynomial p, Polynomial q)
-    {
-        return p.Add(q);
-    }
-    public static Polynomial operator -(Polynomial p, Polynomial q)
-    {
-        return p.Sub(q);
-    }
-    public override string ToString()
-    {
-        return ToString('x');
+        var maxDegree = Math.Max(Degree, p.Degree);
+        var minDegree = Math.Min(Degree, p.Degree);
+
+        var sub = new long[maxDegree];
+
+        for (var i = 0; i < minDegree; i++)
+            sub[i] = coefficients[i] - p.coefficients[i];
+
+        for (var i = minDegree; i < Degree; i++)
+            sub[i] -= coefficients[i];
+        
+        for (var i = minDegree; i < p.Degree; i++)
+            sub[i] -= p.coefficients[i];
+
+        return new Polynomial(sub);
     }
 }
