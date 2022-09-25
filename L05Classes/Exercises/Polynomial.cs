@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Text;
 
 namespace L05Classes;
@@ -12,57 +13,79 @@ namespace L05Classes;
 */
 public class Polynomial
 {
-    private long[] coefficients;
+    private long[] _coefficients;
 
-    public int Degree => coefficients.Length - 1;
+    public int Degree => _coefficients.Length - 1;
 
     public Polynomial(params long[] coefficients)
     {
-        this.coefficients = coefficients;
+        _coefficients = (long[]) coefficients.Clone();
     }
     
-    public long EvaluateAt(long x)
+    public long Evaluate(long x)
     {
-        var result = 0L;
-        for (int i = 0; i < coefficients.Length; i++)
-            result += coefficients[i] * (long)Math.Pow(x, i);
+        var result = _coefficients[0];
+        
+        // Evaluate using Horner's method
+        for (var i = 1; i <= Degree; i++)
+            result = result * x + _coefficients[i];
+ 
         return result;
     }
     
-    public Polynomial Add(Polynomial p)
+    public static Polynomial operator +(Polynomial p, Polynomial q)
     {
-        var maxDegree = Math.Max(Degree, p.Degree);
-        var minDegree = Math.Min(Degree, p.Degree);
-
-        var sum = new long[maxDegree];
-
-        for (var i = 0; i < minDegree; i++)
-            sum[i] = coefficients[i] + p.coefficients[i];
+        var degreeOfSum = Math.Max(p.Degree, q.Degree);
+        var coefficientsSum = p.CloneCoefficientsAndEnsureDegree(degreeOfSum);
         
-        for (var i = minDegree; i < Degree; i++)
-            sum[i] = coefficients[i];
+        for (var i = 0; i <= q.Degree; i++)
+            coefficientsSum[i] += q._coefficients[i];
         
-        for (var i = minDegree; i < p.Degree; i++)
-            sum[i] = p.coefficients[i];
-
-        return new Polynomial(sum);
+        return new Polynomial(coefficientsSum);
     }
-    public Polynomial Sub(Polynomial p)
+    public static Polynomial operator -(Polynomial p, Polynomial q)
     {
-        var maxDegree = Math.Max(Degree, p.Degree);
-        var minDegree = Math.Min(Degree, p.Degree);
-
-        var sub = new long[maxDegree];
-
-        for (var i = 0; i < minDegree; i++)
-            sub[i] = coefficients[i] - p.coefficients[i];
-
-        for (var i = minDegree; i < Degree; i++)
-            sub[i] -= coefficients[i];
+        var degreeOfSum = Math.Max(p.Degree, q.Degree);
+        var coefficientsSum = p.CloneCoefficientsAndEnsureDegree(degreeOfSum);
         
-        for (var i = minDegree; i < p.Degree; i++)
-            sub[i] -= p.coefficients[i];
+        for (var i = 0; i <= q.Degree; i++)
+            coefficientsSum[i] += q._coefficients[i];
+        
+        return new Polynomial(coefficientsSum);
+    }
+    
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        
+        for (var exp = Degree; exp >= 0; exp--)
+            if (_coefficients[exp] != 0)
+                sb.Append($"+{_coefficients[exp]} * x^{exp}");
+        
+        if (sb.Length == 0)
+            return "0";
 
-        return new Polynomial(sub);
+        Beautify(sb);
+        return sb.ToString();
+    }
+
+    private void Beautify(StringBuilder sb)
+    {
+        sb.Replace("+-", "-");                  // Make +- to be -
+        sb.Replace("+", string.Empty, 0, 1);    // remove + at start
+        sb.Replace(" * x^0", string.Empty);     // remove * x^0
+        sb.Replace("1 * x", "x");               // make 1 * x to be x
+        sb.Replace("x^1", "x");                 // make x^1 to be x
+        sb.Replace("-", " - ");                 // add spaces around -
+        sb.Replace("+", " + ");                 // add spaces around +
+        sb.Replace(" - ", "-", 0, 3);           // remove extra spaces around - in first term
+    }
+    
+    
+    private long[] CloneCoefficientsAndEnsureDegree(int newDegree)
+    {
+        var coefficients = new long[newDegree + 1];
+        Array.Copy(_coefficients, coefficients, Degree + 1);
+        return coefficients;
     }
 }
