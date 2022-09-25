@@ -54,7 +54,7 @@ public class PhoneBook
     
     public void Print()
     {
-        for (int i = 0; i < _entries.Length; i++)
+        for (int i = 0; i < Count; i++)
             Console.WriteLine(_entries[i]);
     }
 
