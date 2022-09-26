@@ -13,7 +13,7 @@ public static class IntSets
     //------------------------------------------------------------//
     
     /// <summary>
-    /// Produces the first n squares of the Fibonacci sequence
+    /// Produces the first n squares starting at 0
     /// </summary>
     public static IEnumerable<int> Squares(int n)
     {
@@ -38,7 +38,8 @@ public static class IntSets
     //------------------------------------------------------------//
     
     /// <summary>
-    /// Produces the first n squares of the Fibonacci sequence
+    /// Produces the sequence of elements starting by the (n+1)th
+    /// in the specified sequence
     /// </summary>
     /// <example>
     /// Skip({1,2,3,4,5,6,7,8,9,...}, 3) => {4,5,6,7,8,9,...}
