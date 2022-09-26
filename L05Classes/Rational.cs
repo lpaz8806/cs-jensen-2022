@@ -15,42 +15,9 @@ public struct Rational
 
         this.numerator = numerator;
         this.denominator = denominator;
-        
-        Rationalize();
-    }
-    
-    public Rational Reciprocal
-    {
-        get
-        {
-            if (numerator == 0)
-                throw new Exception();
-
-            return new Rational(denominator, numerator);
-        }
     }
     
     #region Arithmetic Operators
-
-    public static Rational operator +(Rational x, Rational y)
-    {
-        return new Rational(
-            x.numerator * y.denominator + x.denominator * y.numerator,
-            x.denominator * y.denominator
-        );
-    }
-    
-    public static Rational operator -(Rational x)
-    {
-        return new Rational(-x.numerator, x.denominator);
-    }
-    public static Rational operator -(Rational x, Rational y)
-    {
-        return new Rational(
-            x.numerator * y.denominator - x.denominator * y.numerator,
-            x.denominator * y.denominator
-        );
-    }
     
     public static Rational operator *(Rational x, Rational y)
     {
@@ -80,32 +47,22 @@ public struct Rational
         return x.numerator * y.denominator != x.denominator * y.numerator;
     }
     
-    public static bool operator >(Rational x, Rational y)
-    {
-        return x.numerator * y.denominator > x.denominator * y.numerator;
-    }
-    public static bool operator <(Rational x, Rational y)
-    {
-        return x.numerator * y.denominator < x.denominator * y.numerator;
-    }
-    
-    public static bool operator >=(Rational x, Rational y)
-    {
-        return x.numerator * y.denominator >= x.denominator * y.numerator;
-    }
-    public static bool operator <=(Rational x, Rational y)
-    {
-        return x.numerator * y.denominator <= x.denominator * y.numerator;
-    }
-    
-
     #endregion
 
     #region Cast operators
 
-    public static implicit operator double(Rational x)
+    public static explicit operator double(Rational x)
     {
         return (double)x.numerator / x.denominator;
+    }
+    public static explicit operator decimal(Rational x)
+    {
+        return (decimal)x.numerator / x.denominator;
+    }
+    
+    public static explicit operator Rational(int x)
+    {
+        return new Rational(x, 1);
     }
 
     #endregion
@@ -123,37 +80,14 @@ public struct Rational
         return new Rational(numerator, denominator);
     }
 
-    /// <summary>
-    /// Computes the greatest common divisor of x and y. Useful to simplify fractions.
-    /// The greatest common divisor of two numbers is the largest integer that divides
-    /// both of them
-    /// </summary>
-    private static int Gcd(int x, int y)
-    {
-        while (y != 0)
-        {
-            var oldX = x;
-            x = y;
-            y = oldX % y;
-        }
-
-        return x;
-    }
-
-    private void Rationalize()
-    {
-        var sign = numerator < 0 ^ denominator < 0 ? -1 : 1;
-        
-        numerator = Math.Abs(numerator);
-        denominator = Math.Abs(denominator);
-        var gcd = Gcd(numerator, denominator);
-        
-        numerator = sign * (numerator / gcd);
-        denominator /= gcd;
-    }
-    
     public override string ToString()
     {
+        if (numerator == 0)
+            return "0";
+
+        if (denominator == 1)
+            return numerator.ToString();
+        
         return $"{numerator} / {denominator}";
     }
 }
