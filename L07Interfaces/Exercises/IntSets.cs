@@ -1,3 +1,5 @@
+using NotImplementedException = System.NotImplementedException;
+
 namespace L07Interfaces.Exercises;
 
 public static class IntSets
@@ -7,7 +9,11 @@ public static class IntSets
     /// </summary>
     public static IEnumerable<int> Fibonacci(int n)
     {
-        throw new NotImplementedException();
+        for (int i = 0; i < n; i++)
+            yield return Fib(i);
+
+        // Local method. A method inside another method
+        int Fib(int k) => k < 2 ? k : Fib(k - 1) + Fib(k - 2);
     }
     
     //------------------------------------------------------------//
@@ -17,7 +23,9 @@ public static class IntSets
     /// </summary>
     public static IEnumerable<int> Squares(int n)
     {
-        throw new NotImplementedException();
+        for (int i = 0; i < n; i++)
+            yield return i * i;
+
     }
     
     //------------------------------------------------------------//
@@ -32,7 +40,13 @@ public static class IntSets
     /// </example>
     public static IEnumerable<T> Take<T>(IEnumerable<T> items, int n)
     {
-        throw new NotImplementedException();
+        foreach (var item in items)
+        {
+            if(--n < 0)
+                yield break;
+            
+            yield return item;
+        }
     }
     
     //------------------------------------------------------------//
@@ -47,7 +61,13 @@ public static class IntSets
     /// </example>
     public static IEnumerable<T> Skip<T>(IEnumerable<T> items, int n)
     {
-        throw new NotImplementedException();
+        foreach (var item in items)
+        {
+            if (--n >= 0)
+                continue;
+            
+            yield return item;
+        }
     }
     
     //------------------------------------------------------------//
@@ -57,9 +77,24 @@ public static class IntSets
     /// </summary>
     public static IEnumerable<int> Wirth(int n)
     {
-        throw new NotImplementedException();
+        return Take(Wirth(), n);
     }
-    
+    public static IEnumerable<int> Wirth()
+    {
+        return WirthRecursive(1);
+    }
+    private static IEnumerable<int> WirthRecursive(int k)
+    {
+        yield return k;
+        var branch2 = WirthRecursive(2 * k + 1).GetEnumerator();
+        var branch3 = WirthRecursive(3 * k + 1).GetEnumerator();
+
+        while (branch2.MoveNext() && branch3.MoveNext())
+        {
+            yield return branch2.Current;
+            yield return branch3.Current;
+        }
+    }
     //------------------------------------------------------------//
     
 }

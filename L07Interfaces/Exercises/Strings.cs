@@ -7,7 +7,8 @@ public static class Strings
     /// </summary>
     public static IEnumerable<string> ToUpper(IEnumerable<string> items)
     {
-        throw new NotImplementedException();
+        foreach (var item in items)
+            yield return item.ToUpper();
     }
     
     //------------------------------------------------------------//
@@ -18,7 +19,9 @@ public static class Strings
     /// </summary>
     public static IEnumerable<string> FilterByMinLength(IEnumerable<string> items, int minLength)
     {
-        throw new NotImplementedException();
+        foreach (var str in items)
+            if (str.Length >= minLength)
+                yield return str;
     }
     
     //------------------------------------------------------------//

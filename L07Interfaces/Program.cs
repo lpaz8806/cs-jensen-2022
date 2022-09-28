@@ -1,5 +1,6 @@
-﻿using System.Text;
+﻿using System.Threading.Channels;
 using L07Interfaces.Examples;
+using L07Interfaces.Exercises;
 
 namespace L07Interfaces;
 
@@ -7,26 +8,13 @@ class Program
 {
     static void Main(string[] args)
     {
-        var input = Console.ReadLine() ?? String.Empty;
-        Console.WriteLine("True");
-
     }
 
-    static int DivRem(int x, int y, out int rem)
+    static void Print<T>(IEnumerable<T> items)
     {
-        rem = x % y;
-        return x / y;
-    }
-    
-    static bool IsNumber(string str, out int x)
-    {
-        if (str.Length == 4)
+        foreach (var item in items)
         {
-            x = 5;
+            Console.WriteLine(item);
         }
-
-        x = default;
-        return false;
     }
-    
 }

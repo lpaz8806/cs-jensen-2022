@@ -1,3 +1,12 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using System.Threading.Channels;
 
-Console.WriteLine("Hello, World!");
+namespace L08FunctionProgramming;
+
+class Program
+{
+    static void Main()
+    {
+        
+    }
+}
+
