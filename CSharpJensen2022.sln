@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L07Interfaces", "L07Interfa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L08FunctionalProgramming", "L08FunctionalProgramming\L08FunctionalProgramming.csproj", "{755838EA-3D73-4ECC-973D-04C2461755EE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repetition1005", "Repetition1005\Repetition1005.csproj", "{C9F8F25E-B5A7-464F-B56F-4FCF7299E4DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,5 +81,9 @@ Global
 		{755838EA-3D73-4ECC-973D-04C2461755EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{755838EA-3D73-4ECC-973D-04C2461755EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{755838EA-3D73-4ECC-973D-04C2461755EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9F8F25E-B5A7-464F-B56F-4FCF7299E4DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9F8F25E-B5A7-464F-B56F-4FCF7299E4DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9F8F25E-B5A7-464F-B56F-4FCF7299E4DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9F8F25E-B5A7-464F-B56F-4FCF7299E4DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
