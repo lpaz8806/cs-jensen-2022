@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L08FunctionalProgramming", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repetition1005", "Repetition1005\Repetition1005.csproj", "{C9F8F25E-B5A7-464F-B56F-4FCF7299E4DE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L09DataStructures", "L09DataStructures\L09DataStructures.csproj", "{A0013E7C-5EBB-456F-A2E2-B950EF4E0210}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -85,5 +87,9 @@ Global
 		{C9F8F25E-B5A7-464F-B56F-4FCF7299E4DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9F8F25E-B5A7-464F-B56F-4FCF7299E4DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9F8F25E-B5A7-464F-B56F-4FCF7299E4DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0013E7C-5EBB-456F-A2E2-B950EF4E0210}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0013E7C-5EBB-456F-A2E2-B950EF4E0210}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0013E7C-5EBB-456F-A2E2-B950EF4E0210}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0013E7C-5EBB-456F-A2E2-B950EF4E0210}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
