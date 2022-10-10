@@ -32,6 +32,7 @@ public class App
     {
         try
         {
+            // The parser is not implemented to return a ParserResult :)
             var pr = new ParserResult(default, default, default);
             var result = Dispatch(pr);
             Console.WriteLine(result.ToString());
