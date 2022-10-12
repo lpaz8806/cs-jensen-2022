@@ -17,3 +17,14 @@ Console.WriteLine(
         TreeTraversals.BFS(tree)
         )
     );
+    
+var tree2 = new Tree<int>(
+    1,
+    new Tree<int>(2,
+        new Tree<int>(7),
+        new Tree<int>(5)
+        ),
+    new Tree<int>(3),
+    new Tree<int>(4)
+    );
+Console.WriteLine(TreeOperations.CountNodes(tree2));

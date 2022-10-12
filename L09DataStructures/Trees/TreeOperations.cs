@@ -26,4 +26,13 @@ public static class TreeOperations
             1 +
             root.Children.Select(n => CountNodes(n)).Sum();
     }
+
+    public static int SumLabels(ITree<int> root)
+    {
+        return 0;
+    }
+    public static int Max(ITree<int> root)
+    {
+        return 0;
+    }
 }
