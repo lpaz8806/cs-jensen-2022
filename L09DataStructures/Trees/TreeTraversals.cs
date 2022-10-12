@@ -21,15 +21,38 @@ public static class TreeTraversals
     
     public static IEnumerable<T> PreOrder<T>(BinaryTree<T> root)
     {
-        yield break;
+        yield return root.Label;
+        if(root.Left != null)
+            foreach (var item in PreOrder(root.Left))
+                yield return item;
+        
+        if(root.Right != null)
+            foreach (var item in PreOrder(root.Right))
+                yield return item;
     }
     public static IEnumerable<T> InOrder<T>(BinaryTree<T> root)
     {
-        yield break;
+        if(root.Left != null)
+            foreach (var item in PreOrder(root.Left))
+                yield return item;
+        
+        yield return root.Label;
+        
+        if(root.Right != null)
+            foreach (var item in PreOrder(root.Right))
+                yield return item;
     }
     public static IEnumerable<T> PostOrder<T>(BinaryTree<T> root)
     {
-        yield break;
+        if(root.Left != null)
+            foreach (var item in PreOrder(root.Left))
+                yield return item;
+        
+        if(root.Right != null)
+            foreach (var item in PreOrder(root.Right))
+                yield return item;
+        
+        yield return root.Label;
     }
 
 

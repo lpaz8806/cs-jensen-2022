@@ -1,6 +1,6 @@
 namespace L09DataStructures.Trees;
 
-public class BinaryTree<T>
+public class BinaryTree<T> : ITree<T>
 {
     public T Label { get; set; }
     public BinaryTree<T>? Left { get; set; }
@@ -11,6 +11,14 @@ public class BinaryTree<T>
         Label = label;
         Left = left;
         Right = right;
+    }
+
+    public IEnumerable<ITree<T>> Children {
+        get
+        {
+            if (Left != null) yield return Left;
+            if (Right != null) yield return Right;
+        }
     }
 
     public override string ToString()
