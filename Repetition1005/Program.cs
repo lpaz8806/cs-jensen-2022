@@ -2,28 +2,43 @@
 
 using Repetition1005;
 
-var parser = new InputParser();
-
-while (true)
+class Program
 {
-    var input = Console.ReadLine() ?? string.Empty;
-    if (input == string.Empty)
-        return;
-    try
+    static void Main()
     {
-        var parsedStr = parser.Parse(input);
-        Console.WriteLine(parsedStr);
+        var parser = new InputParser();
+        
+        while (true)
+        {
+            var input = (Console.ReadLine() ?? string.Empty).Trim();
+            
+            if (input.Equals("quit", StringComparison.InvariantCultureIgnoreCase))
+                return;
+            
+            try
+            {
+                // var parsedStr = parser.Parse(input);
+                ParserResult pr = default;
+                var result = Dispatch(pr);
+                Console.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error dude!");
+            }
+        }
     }
-    catch (Exception e)
+    
+    static Rational Dispatch(ParserResult pr)
     {
-        Console.WriteLine("Error dude!");
+        switch (pr.Operator)
+        {
+            case "+": return pr.Operand1 + pr.Operand2;
+            case "-": return pr.Operand1 - pr.Operand2;
+            case ":": return pr.Operand1 / pr.Operand2;
+            case "*": return pr.Operand1 * pr.Operand2;
+            case "": return pr.Operand1;
+            default: throw new Exception();
+        }
     }
 }
-/*
-/// ParseOperand("37") => "37"
-    /// ParseOperand("-2:3") => "-2"
-    /// ParseOperand("-2/5") => "-2/5"
-    /// ParseOperand("-2/5a") => "-2/5"
-    /// ParseOperand("3.15abs") => "3.15"
-    /// ParseOperand("a.15abs") => Exception
-*/
