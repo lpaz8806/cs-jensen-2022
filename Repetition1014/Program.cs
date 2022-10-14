@@ -229,12 +229,12 @@ void CyclesInGraphs()
 {
     var n1 = new Vertex<int>(1);
     var n2 = new Vertex<int>(2);
-    var n3 = new Vertex<int>(4);
+    var n3 = new Vertex<int>(3);
     var n4 = new Vertex<int>(4);
     n1.Edges.Add(n2);
     n1.Edges.Add(n3);
     n3.Edges.Add(n4);
-    n4.Edges.Add(n2);
+    n4.Edges.Add(n1);
 
     bool ContainsCycle<T>(Vertex<T> vertex)
     {
@@ -261,25 +261,24 @@ void CyclesInGraphs()
 
     Vertex<T>[] FindCycle<T>(Vertex<T> vertex)
     {
-        var path = new Stack<Vertex<T>>();
+        var pathFound = new Stack<Vertex<T>>();
     
-        if (ContainsCycle(vertex, path))
-            return path.ToArray();
-
-        return Array.Empty<Vertex<T>>();
+        return ContainsCycleStack(vertex, pathFound)
+            ? pathFound.Reverse().ToArray()
+            : Array.Empty<Vertex<T>>();
     
-        bool ContainsCycle(Vertex<T> v, Stack<Vertex<T>> visited)
+        bool ContainsCycleStack(Vertex<T> v, Stack<Vertex<T>> path)
         {
-            if (visited.Contains(v))
+            if (path.Contains(v))
                 return true;
 
-            visited.Push(v);
+            path.Push(v);
             foreach (var w in v.Edges)
             {
-                if (ContainsCycle(w, visited))
+                if (ContainsCycleStack(w, path))
                     return true;
             }
-            visited.Pop();
+            path.Pop();
             return false;
         }
     }
@@ -287,3 +286,4 @@ void CyclesInGraphs()
     foreach(var step in FindCycle(n1))
         Console.WriteLine(step);
 }
+CyclesInGraphs();
