@@ -22,14 +22,14 @@ public struct Rational
     public static Rational operator +(Rational x, Rational y)
     {
         return new Rational(
-            x.numerator * y.numerator,
+            x.numerator * y.denominator + x.denominator * y.numerator,
             x.denominator * y.denominator
         );
     }
     public static Rational operator -(Rational x, Rational y)
     {
         return new Rational(
-            x.numerator * y.numerator,
+            x.numerator * y.denominator - x.denominator * y.numerator,
             x.denominator * y.denominator
         );
     }
