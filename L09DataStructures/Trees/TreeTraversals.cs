@@ -2,20 +2,18 @@ namespace L09DataStructures.Trees;
 
 public static class TreeTraversals
 {
-    public static IEnumerable<T> BFS<T>(BinaryTree<T> root)
+    public static IEnumerable<T> BFS<T>(ITree<T> root)
     {
-        var queue = new Queue<BinaryTree<T>>();
+        var queue = new Queue<ITree<T>>();
         queue.Enqueue(root);
+        
         while (queue.Count > 0)
         {
-            var item = queue.Dequeue();
-            yield return item.Label;
+            var currentNode = queue.Dequeue();
+            yield return currentNode.Label;
             
-            if(item.Left != null)
-                queue.Enqueue(item.Left);
-            
-            if(item.Right != null)
-                queue.Enqueue(item.Right);
+            foreach (var child in currentNode.Children)
+                queue.Enqueue(child);
         }
     }
     
@@ -54,6 +52,4 @@ public static class TreeTraversals
         
         yield return root.Label;
     }
-
-
 }
