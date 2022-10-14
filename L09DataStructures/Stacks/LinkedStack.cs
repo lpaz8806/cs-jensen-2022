@@ -15,10 +15,10 @@ public class LinkedStack<T> : IStack<T>
     public T Pop()
     {
         var top = Top;
-        _head = _head.Next;
+        _head = _head!.Next;
         return top;
     }
 
-    public T Top => !IsEmpty ? _head.Value : throw new InvalidOperationException("Stack is empty");
+    public T Top => !IsEmpty ? _head!.Value : throw new InvalidOperationException("Stack is empty");
     public bool IsEmpty => _head == null;
 }

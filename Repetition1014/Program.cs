@@ -185,3 +185,105 @@ void Throw()
             : throw new DivideByZeroException();
     }
 }
+
+void CyclesInLinkedLists()
+{
+    var n1 = new MyLinkedNode<int>(1);
+    var n2 = new MyLinkedNode<int>(2);
+    var n3 = new MyLinkedNode<int>(3);
+    var n4 = new MyLinkedNode<int>(4);
+
+    n1.Next = n2;
+    n2.Next = n3;
+    n3.Next = n4;
+    n4.Next = n2;   // comment out to remove the cycle
+
+    Console.WriteLine(HasCycles(n1) ? "Has cycles" : "Has no cycles");
+
+    IEnumerable<MyLinkedNode<T>> Enumerate<T>(MyLinkedNode<T> n1)
+    {
+        for (var cursor = n1; cursor != null; cursor = cursor.Next)
+            yield return cursor;
+    }
+
+    // Check if a linked list has cycles
+    bool HasCycles<T>(MyLinkedNode<T> root)
+    {
+        var set = new HashSet<MyLinkedNode<T>>();
+
+        foreach (var node in Enumerate(root))
+        {
+            if (set.Contains(node))
+                return true;
+
+            set.Add(node);
+        }
+
+        return false;
+    }
+
+    
+}
+
+void CyclesInGraphs()
+{
+    var n1 = new Vertex<int>(1);
+    var n2 = new Vertex<int>(2);
+    var n3 = new Vertex<int>(4);
+    var n4 = new Vertex<int>(4);
+    n1.Edges.Add(n2);
+    n1.Edges.Add(n3);
+    n3.Edges.Add(n4);
+    n4.Edges.Add(n2);
+
+    bool ContainsCycle<T>(Vertex<T> vertex)
+    {
+        var set = new HashSet<Vertex<T>>();
+        return ContainsCycle(vertex, set);
+    
+        bool ContainsCycle(Vertex<T> v, HashSet<Vertex<T>> visited)
+        {
+            if (visited.Contains(v))
+                return true;
+
+            visited.Add(v);
+            foreach (var w in v.Edges)
+            {
+                if (ContainsCycle(w, visited))
+                    return true;
+            
+                visited.Remove(w);
+            }
+
+            return false;
+        }
+    }
+
+    Vertex<T>[] FindCycle<T>(Vertex<T> vertex)
+    {
+        var path = new Stack<Vertex<T>>();
+    
+        if (ContainsCycle(vertex, path))
+            return path.ToArray();
+
+        return Array.Empty<Vertex<T>>();
+    
+        bool ContainsCycle(Vertex<T> v, Stack<Vertex<T>> visited)
+        {
+            if (visited.Contains(v))
+                return true;
+
+            visited.Push(v);
+            foreach (var w in v.Edges)
+            {
+                if (ContainsCycle(w, visited))
+                    return true;
+            }
+            visited.Pop();
+            return false;
+        }
+    }
+
+    foreach(var step in FindCycle(n1))
+        Console.WriteLine(step);
+}
