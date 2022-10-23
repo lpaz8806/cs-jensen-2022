@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L10DesignPrinciples", "L10D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendingMachine", "VendingMachine\VendingMachine.csproj", "{A9794EB9-DE57-4FD9-9F26-5914B8673B24}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Handledning1019", "Handledning1019\Handledning1019.csproj", "{AFE4013F-734A-4548-88F6-23158897C13D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -115,5 +117,9 @@ Global
 		{A9794EB9-DE57-4FD9-9F26-5914B8673B24}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9794EB9-DE57-4FD9-9F26-5914B8673B24}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9794EB9-DE57-4FD9-9F26-5914B8673B24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFE4013F-734A-4548-88F6-23158897C13D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFE4013F-734A-4548-88F6-23158897C13D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFE4013F-734A-4548-88F6-23158897C13D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFE4013F-734A-4548-88F6-23158897C13D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
