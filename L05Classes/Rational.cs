@@ -15,9 +15,24 @@ public struct Rational
 
         this.numerator = numerator;
         this.denominator = denominator;
+        Simplify();
     }
     
     #region Arithmetic Operators
+    public static Rational operator +(Rational x, Rational y)
+    {
+        return new Rational(
+            x.numerator * y.denominator + x.denominator * y.numerator,
+            x.denominator * y.denominator
+        );
+    }
+    public static Rational operator -(Rational x, Rational y)
+    {
+        return new Rational(
+            x.numerator * y.denominator + x.denominator * y.numerator,
+            x.denominator * y.denominator
+        );
+    }
     
     public static Rational operator *(Rational x, Rational y)
     {
@@ -80,6 +95,12 @@ public struct Rational
         return new Rational(numerator, denominator);
     }
 
+    void Simplify()
+    {
+        
+    }
+
+    int Gcd(int x, int y) => y == 0 ? x : Gcd(y, x % y);
     public override string ToString()
     {
         if (numerator == 0)

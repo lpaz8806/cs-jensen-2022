@@ -1,0 +1,21 @@
+{
+  "days": {
+    "en": ["Söndag",
+      "Måndag",
+      "Tiesdag",
+      "Onsdag",
+      "Torsdag",
+      "Fredag",
+      "Lördag"
+    ],
+    "sv": ["Söndag",
+      "Måndag",
+      "Tiesdag",
+      "Onsdag",
+      "Torsdag",
+      "Fredag",
+      "Lördag"
+    ]
+  }
+}
+
